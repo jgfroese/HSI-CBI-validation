@@ -8,21 +8,21 @@ This R script describes a methodology for validating a spatially-explicit numeri
 
 Our implementation allows validation of multiple model predictions (here: habitat suitability index (HSI)) against multiple validation data sets.
 
-The R script requires two `.TXT` files for each model/validation data combination:
+The R script requires two `.TXT` files for each model / validation data combination, which have to be prepared in package {raster} or alternative GIS software as described below:
 
 1. Expected HSI across validation background:
    + define justifiable validation background (representative of data)
    + mask raster layer describing the spatial distribution of the model-predicted value by the validation background
    + export masked raster attribute table to `.TXT` with 3 columns: [ID], [predicted value, e.g. HSI], [pixel count]
-2. Predicted HSI at presence records:
+2. Predicted HSI at species presence records:
    + convert presence records into raster layer
    + combine masked raster layers of the model-predicted value and presence records
    + export combined raster attribute table to `.TXT` with 4 columns: [ID], [pixel count], [predicted value, e.g. HSI], [number of presence records per pixel (esp. if coarse grain, multiple records may fall within one pixel]
 
-For each model prediction, the R script returns:
-   + the *CBI* validation metric
+For each model / validation data combination, the R script returns:
+   + the *CBI* and *P/E max* validation metrics
    + the proportion of the validation background with HSI above a user-defined threshold
-   + a plot of the predicted-to-expected ratio, i.e. the proportion of presence records with a given HSI (or range of HSI) divided by the proportion of the validation background covered by that HSI (or range of HSI)
+   + a plot of the predicted-to-expected (P/E) ratio, i.e. the (predicted) proportion of presence records with a given HSI (or range of HSI) divided by the (expected) proportion of the validation background covered by that HSI (or range of HSI)
 
 ## References
 * Boyce, M.S. et al. 2002. Evaluating resource selection functions. — Ecological Modelling 157: 281-300.
