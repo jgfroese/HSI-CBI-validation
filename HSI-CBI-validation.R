@@ -157,7 +157,7 @@ plot.v.list <- list (validation_1 = boyce.v1, validation_2 = boyce.v2, ...) # gi
 
 # create plot (adjust graphical pars for your data and length of plot.list, here shown for (a) plot.m.list with length = 4)
 graphics.off()
-par(mfrow = c(2, 3), mar = c(2, 2, 2, 1), oma = c(3, 3, 0, 0), cex = 0.6) # adjust graphical pars
+par(mfrow = c(2, 3), mar = c(2, 2, 2, 1), oma = c(3, 3, 0, 0), cex = 0.6)
 for (i in seq_along(plot.m.list)) {
   plot(plot.m.list[[i]][[1]]$HS, plot.m.list[[i]][[1]]$F.ratio, type = "n", xlab = '', ylab = '', 
        xlim = c(10, 90), ylim = c(0, 5), main = paste(names(boyce.list[i]))) # adjust xlim/ylim to your data
@@ -169,6 +169,6 @@ for (i in seq_along(plot.m.list)) {
 }
 plot.new()
 legend("center", c("name of validation data 1", "name of validation data 1", "Smoothed average"), 
-       bty = "n", lty = c(1,2,1), col = c("black", "black", "red"), lwd = c(1, 1, 3), cex = 1.5) # adjjust graphical pars
-mtext("Habitat suitability index (HSI)", side = 1, outer = TRUE, cex = 1.2, line = 1.3) # adjust graphical pars
-mtext("Predicted-to-expected (P/E) ratio", side = 2, outer = TRUE, cex = 1.2, line = 1.1) # adjust graphical pars
+       bty = "n", lty = c(1,2,1), col = c("black", "black", "red"), lwd = c(1, 1, 3), cex = 1.5)
+mtext("Habitat suitability index (HSI)", side = 1, outer = TRUE, cex = 1.2, line = 1.3)
+mtext("Predicted-to-expected (P/E) ratio", side = 2, outer = TRUE, cex = 1.2, line = 1.1)
