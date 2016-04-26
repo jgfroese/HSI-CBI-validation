@@ -80,8 +80,8 @@ exp.v.list = vector("list", n.list)
 for (i in seq_along(exp.list)) {
   exp.v = vector()
   for (j in 1:length(exp.list[[i]]$Pixelcount)) {
-    for (k in 1:exp.list[[i]][j, 2]) {
-      exp.v <-append(exp.v, exp.list[[i]][j, 1])
+    for (k in 1:exp.list[[i]][j, 3]) {
+      exp.v <-append(exp.v, exp.list[[i]][j, 2])
     }
   }
   exp.v.list[[i]] <- append(exp.v.list[[i]], exp.v)
@@ -161,12 +161,12 @@ graphics.off()
 par(mfrow = c(2, 3), mar = c(2, 2, 2, 1), oma = c(3, 3, 0, 0), cex = 0.6)
 for (i in seq_along(plot.m.list)) {
   plot(plot.m.list[[i]][[1]]$HS, plot.m.list[[i]][[1]]$F.ratio, type = "n", xlab = '', ylab = '', 
-       xlim = c(10, 90), ylim = c(0, 5), main = paste(names(boyce.list[i]))) # adjust xlim/ylim to your data
-  lines(boyce.list[[i]][[1]]$HS, boyce.list[[i]][[1]]$F.ratio, col = "black", lty = 1) # one line per validation data set
-  lines(boyce.list[[i]][[2]]$HS, boyce.list[[i]][[2]]$F.ratio, col = "black", lty = 2)
-  av20 <- rollmean((na.fill(boyce.list[[i]][[1]]$F.ratio, 0) + na.fill(boyce.list[[i]][[2]]$F.ratio, 0)) / 2, 20,
+       xlim = c(10, 90), ylim = c(0, 5), main = paste(names(plot.m.list[i]))) # adjust xlim/ylim to your data
+  lines(plot.m.list[[i]][[1]]$HS, plot.m.list[[i]][[1]]$F.ratio, col = "black", lty = 1) # one line per validation data set
+  lines(plot.m.list[[i]][[2]]$HS, plot.m.list[[i]][[2]]$F.ratio, col = "black", lty = 2)
+  av20 <- rollmean((na.fill(plot.m.list[[i]][[1]]$F.ratio, 0) + na.fill(plot.m.list[[i]][[2]]$F.ratio, 0)) / 2, 20,
        fill = "extend") # smoothed average across all validation data sets (20 PE ratio points)
-  lines((boyce.list[[i]][[1]]$HS + boyce.list[[i]][[2]]$HS) / 2, av20, col = "red",lwd = 2) # trend line
+  lines((plot.m.list[[i]][[1]]$HS + plot.m.list[[i]][[2]]$HS) / 2, av20, col = "red",lwd = 2) # trend line
 }
 plot.new()
 legend("center", c("name of validation data 1", "name of validation data 1", "Smoothed average"), 
