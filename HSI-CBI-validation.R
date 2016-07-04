@@ -117,7 +117,7 @@ for (i in seq_along(boyce.list)) {
 }
 CBI.list; PEmax.list
 
-## Step 5: investigate model specificity: compute proportion of validation background with HSI above threshold
+## Step 5: compute proportion of validation background with HSI above threshold
 t.HSI <- your.HSI.threshold # the user-defined HSI threshold (can be defined following investigation of PE-rato plots below)
 HSI.t <- vector("list", n.list) # replace "t" with user-defined threshold to maintain transparency
 for (i in seq_along(HSI.t)) {
